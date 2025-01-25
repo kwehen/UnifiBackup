@@ -8,9 +8,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.options import Options
+from dotenv import load_dotenv
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
+
+load_dotenv()
 
 # Initialize S3 client only if S3 environment variables are present
 aws_access_key = os.getenv('AWS_ACCESS_KEY')
@@ -77,12 +80,22 @@ def upload_to_s3(backup_file, key_name):
         logging.warning("S3 client is not initialized. Skipping S3 upload.")
 
 def perform_backup(driver, output_directory):
-    console_settings = driver.find_element(By.CSS_SELECTOR, '[data-testid="console-settings"]')
+    console_settings = driver.find_element(By.CSS_SELECTOR, '[data-testid="navigation-settings"]')
     logging.info("Found Console Settings.")
     console_settings.click()
     time.sleep(1)
     
-    backup_button = driver.find_element(By.XPATH, '//button[contains(@class, "button__VCR3r9bC")]//span[text()="Back Up Now"]')
+    control_plane_settings = driver.find_element(By.CSS_SELECTOR, '[data-testid="control-plane"]')
+    logging.info("Control plane field found")
+    control_plane_settings.click()
+    time.sleep(1)
+
+    backups_panel = driver.find_element(By.CSS_SELECTOR, '[data-testid="backups"]')
+    logging.info("Backups field found")
+    backups_panel.click()
+    time.sleep(1)
+
+    backup_button = driver.find_element(By.XPATH, '//button[contains(@class, "button__VCR3r9bC")]//span[text()="Download"]')
     logging.info("Backup field found, backing up now.")
     backup_button.click()
     logging.info("Waiting for backup to download...")
