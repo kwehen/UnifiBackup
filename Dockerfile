@@ -5,10 +5,9 @@ RUN apt-get update \
     && apt-get install -y firefox-esr \
     && rm -rf /var/lib/apt/lists/*
 
-# Install required packages
-RUN pip install selenium
-RUN pip install webdriver_manager
-RUN pip install boto3
+# Install Python dependencies
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 # Set the working directory
 WORKDIR /app
