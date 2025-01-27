@@ -53,6 +53,7 @@ def setup_webdriver():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options, service=FirefoxService(GeckoDriverManager().install()))
+    time.sleep(5)
     return driver
 
 def login_to_unifi(driver, username, password, unifiip):
