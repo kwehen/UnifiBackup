@@ -2,8 +2,10 @@
 FROM python:3.11-slim
 
 RUN apt-get update \
-    && apt-get install -y firefox-esr libnss3 libdbus-glib-1-2 libxtst6 libgtk-3-0 libx11-xcb1 libxrender1 \
+    && apt-get install -y firefox-esr \
     && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /root/Downloads
 
 # Install Python dependencies
 COPY requirements.txt /tmp/requirements.txt
