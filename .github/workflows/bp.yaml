@@ -58,4 +58,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/kwehen/unifibackup:latest
-            ghcr.io/kwehen/unifibackup:{{ env.TAG }}
+            ghcr.io/kwehen/unifibackup:${{ env.TAG }}
