@@ -8,7 +8,7 @@ The Unifi API spec seems to be a bit **dense**..so I chose the worst route of th
 services:
   unifibackup:
     container_name: unifibackup
-    image: 'jeffhardyski/unifibackup:9.0.108'
+    image: 'ghcr.io/kwehen/unifibackup:9.0.108'
     environment:
       # AWS_ACCESS_KEY: ""
       # AWS_SECRET_ACCESS_KEY: ""
@@ -35,7 +35,7 @@ services:
 
    The repository includes a `docker-compose.yml` file and a `Dockerfile`:
 
-   - **Docker Compose file**: Defines a service named `unifibackup` that uses the `jeffhardyski/unifibackup:0.1` image. It sets the environment variables required for the backup script and ensures the container restarts unless stopped.
+   - **Docker Compose file**: Defines a service named `unifibackup` that uses the `ghcr.io/kwehen/unifibackup:9.0.108` image. It sets the environment variables required for the backup script and ensures the container restarts unless stopped.
 
    Run the Docker container:
 
