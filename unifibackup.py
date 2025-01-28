@@ -95,11 +95,17 @@ def perform_backup(driver, output_directory):
     backups_panel.click()
     time.sleep(1)
 
-    backup_button = driver.find_element(By.XPATH, '//button[contains(@class, "button__VCR3r9bC")]//span[text()="Download"]')
-    logging.info("Backup field found, backing up now.")
+    backup_tab = driver.find_element(By.XPATH, '//button[contains(@class, "button__VCR3r9bC")]//span[text()="Download"]')
+    logging.info("Backup tab found")
+    backup_tab.click()
+    time.sleep(2)
+
+    backup_button = driver.find_element(By.XPATH, "//div[contains(@class, 'overlay__Ji1BDxnM')]//button[contains(@class, 'button__VCR3r9bC') and .//span[text()='Download']]")
+    logging.info("Backing up now.")
     backup_button.click()
+
     logging.info("Waiting for backup to download...")
-    time.sleep(15)
+    time.sleep(12)
     
     # Ensure the output directory exists
     if not os.path.exists(output_directory):
