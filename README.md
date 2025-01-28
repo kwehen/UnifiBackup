@@ -18,7 +18,7 @@ services:
       PASSWORD: "" 
       UNIFI_IP: "" # Router IP Address
       BACKUP_INTERVAL: "72" # Defaults to 24 Hours
-      OUTPUT_DIRECTORY: "/output" # Defaults to "~/Downloads"
+      OUTPUT_DIRECTORY: "home/unifi/output" # Defaults to "~/Downloads"
     restart: unless-stopped 
 ```
 
