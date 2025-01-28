@@ -5,7 +5,11 @@ RUN apt-get update \
     && apt-get install -y firefox-esr \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /root/Downloads
+RUN useradd -u 568 unifibackup
+
+USER unifi
+
+RUN mkdir /unifi/Downloads
 
 # Install Python dependencies
 COPY requirements.txt /tmp/requirements.txt
