@@ -1,6 +1,8 @@
 # Use the official Python image as a base image
 FROM python:3.11-slim
 
+LABEL org.opencontainers.image.source="https://github.com/kwehen/UnifiBackup"
+
 RUN apt-get update \
     && apt-get install -y firefox-esr \
     && rm -rf /var/lib/apt/lists/*
