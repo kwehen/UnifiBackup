@@ -8,7 +8,7 @@ The Unifi API spec seems to be a bit **dense**..so I chose the worst route of th
 services:
   unifibackup:
     container_name: unifibackup
-    image: 'jeffhardyski/unifibackup:<version-or-latest>'
+    image: 'jeffhardyski/unifibackup:9.0.108'
     environment:
       # AWS_ACCESS_KEY: ""
       # AWS_SECRET_ACCESS_KEY: ""
