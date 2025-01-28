@@ -9,7 +9,7 @@ RUN useradd -u 568 unifibackup
 
 USER unifi
 
-RUN mkdir /unifi/Downloads
+RUN mkdir /home/unifi/Downloads
 
 # Install Python dependencies
 COPY requirements.txt /tmp/requirements.txt
