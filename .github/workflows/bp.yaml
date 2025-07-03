@@ -5,6 +5,14 @@ on:
     tags:
       - '*'
 
+env:
+  ACTION_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+  OTLP_PROTOCOL: HTTP
+  WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+  WORKFLOW_RUN_NAME: ${{ github.event.workflow_run.name }}
+  OTEL_EXPORTER_OTLP_HEADERS: Authorization=Api-Token ${{ secrets.DYNATRACE_OTEL_API_TOKEN }}
+
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -13,6 +21,10 @@ jobs:
       contents: read
 
     steps:
+
+      - name: OTLP GitHubAction Exporter
+        uses: StephenGoodall/OTLP-GitHubAction-Exporter@v3.2.5
+        
       - name: Checkout
         uses: actions/checkout@v3
 
