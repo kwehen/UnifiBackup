@@ -22,8 +22,6 @@ jobs:
 
     steps:
 
-      - name: OTLP GitHubAction Exporter
-        uses: StephenGoodall/OTLP-GitHubAction-Exporter@v3.2.5
         
       - name: Checkout
         uses: actions/checkout@v3
@@ -75,3 +73,6 @@ jobs:
           tags: |
             ghcr.io/kwehen/unifibackup:latest
             ghcr.io/kwehen/unifibackup:${{ env.TAG }}
+
+      - name: OTLP GitHubAction Exporter
+        uses: StephenGoodall/OTLP-GitHubAction-Exporter@v3.2.5
